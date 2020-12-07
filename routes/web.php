@@ -22,5 +22,7 @@ Route::get('/', function () {
 Route::get('file-upload', [FileController::class, 'index']);
 //store files in database
 Route::post('save-file-upload', [FileController::class, 'fileStore']);
-
+//delete file
+Route::get('delete-file/{id}', [FileController::class, 'deleteFile']);
+//search
 Route::get('file-search', [FileController::class, 'search']);

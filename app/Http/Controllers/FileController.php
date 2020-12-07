@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 Use App\Models\File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 class FileController extends Controller
 {
@@ -56,5 +58,12 @@ class FileController extends Controller
         
         return view('searchresult',compact('files'));
 
+    }
+
+     public function deleteFile($id)
+    {
+        DB::table('files')->where('id', '=', $id)->delete();
+        $files = File::paginate(5);
+        return view('searchresult',compact('files'));
     }
 }

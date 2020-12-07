@@ -31,17 +31,35 @@
  <div class="row justify-content-center">
   <div class="card col-md-9">
          <div class="card-body">
- 
-         @foreach($files as $file)
-         <div class="row">
-            <div class="col-md-12">
-                {{$file->file_name}}
-            </div>
-         </div>
-        @endforeach
-        <nav aria-label="...">
-            {{ $files->links() }}
-        </nav>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#id</th>
+                    <th scope="col">File name</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    @foreach($files as $file)
+                    <tr>
+                        <td>
+                            {{$file->id}}
+                        </td>
+                        <td>
+                            {{$file->file_name}}
+                        </td>
+                        <td>
+                            <a href = 'delete-file/{{ $file->id }}'>Delete</a>
+                        </td>
+                    </tr>    
+                    @endforeach 
+                  
+                </tbody>
+            </table>
+            <footer>
+                {{ $files->links() }}
+            </footer>
          </div>
      </div>
   </div>
