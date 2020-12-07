@@ -63,6 +63,7 @@ class FileController extends Controller
      public function deleteFile($id)
     {
         DB::table('files')->where('id', '=', $id)->delete();
+        
         $files = File::paginate(5);
         return view('searchresult',compact('files'));
     }
